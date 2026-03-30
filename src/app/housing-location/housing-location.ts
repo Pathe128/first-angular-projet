@@ -1,15 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { HousingLocationInfo } from '../housinglocation';
 
 @Component({
   selector: 'app-housing-location',
   imports: [],
   template: `
-    <p>
-      housing-location works!
-    </p>
+    <section class="listing">
+      <img
+      class="listin-photo"
+       [src]="housingLocation().photo"
+       alt="Exterior photo of {{ housingLocation().name }}"
+       crossorigin
+       >
+       <h2 class="listing-heading">{{housingLocation().name}}</h2>
+       <p class="listing-location">{{housingLocation().city}}</p>
+    </section>
   `,
   styles: ``,
 })
 export class HousingLocation {
+
+  housingLocation = input.required<HousingLocationInfo>();
 
 }
